@@ -173,11 +173,11 @@ void zhuan4(const __m128 s1, const __m128 s2, const __m128 s3, const __m128 s4,
     float* d1, float* d2,float* d3, float* d4)
 {
     __m128 t1, t2, t3, t4, t5, t6, t7, t8;
-    t1 = _mm_permute_ps(s1, 0b01001110);//将第一行数据进行交换得到a2,a3,a0,a1
-    t2 = _mm_permute_ps(s2, 0b01001110);//将第二行数据进行交换得到b2,b3,b0,b1
-    t3 = _mm_permute_ps(s3, 0b01001110);//将第三行数据进行交换得到c2,c3,c0,c1
-    t4 = _mm_permute_ps(s4, 0b01001110);//将第四行数据进行交换得到d2,d3,d0,d1
-    t5 = _mm_blend_ps(s1, t3, 0b1100);//合并原序列第一行和重排序列第三行得到a0,a1,c0,c1
+    t1 = _mm_permute_ps(s1, 0b01001110);//灏嗙涓�琛屾暟鎹繘琛屼氦鎹㈠緱鍒癮2,a3,a0,a1
+    t2 = _mm_permute_ps(s2, 0b01001110);//灏嗙浜岃鏁版嵁杩涜浜ゆ崲寰楀埌b2,b3,b0,b1
+    t3 = _mm_permute_ps(s3, 0b01001110);//灏嗙涓夎鏁版嵁杩涜浜ゆ崲寰楀埌c2,c3,c0,c1
+    t4 = _mm_permute_ps(s4, 0b01001110);//灏嗙鍥涜鏁版嵁杩涜浜ゆ崲寰楀埌d2,d3,d0,d1
+    t5 = _mm_blend_ps(s1, t3, 0b1100);//鍚堝苟鍘熷簭鍒楃涓�琛屽拰閲嶆帓搴忓垪绗笁琛屽緱鍒癮0,a1,c0,c1
     t6 = _mm_blend_ps(s2, t4, 0b1100);//b0,b1,d0,d1
     t7 = _mm_blend_ps(t1, s3, 0b1100);//a2,a3,c2,c3
     t8 = _mm_blend_ps(t2, s4, 0b1100);//b2,b3,d2,d3
@@ -185,7 +185,7 @@ void zhuan4(const __m128 s1, const __m128 s2, const __m128 s3, const __m128 s4,
     t6 = _mm_permute_ps(t6, 0b11011000);
     t7 = _mm_permute_ps(t7, 0b11011000);
     t8 = _mm_permute_ps(t8, 0b11011000);
-   _mm_stream_ps (d1, _mm_unpacklo_ps(t5, t6));//生成转置子块，并写入对应位置a0,b0,c0,d0
+   _mm_stream_ps (d1, _mm_unpacklo_ps(t5, t6));//鐢熸垚杞疆瀛愬潡锛屽苟鍐欏叆瀵瑰簲浣嶇疆a0,b0,c0,d0
    _mm_stream_ps (d2, _mm_unpackhi_ps  (t5, t6));//a1,b1,c1,d1
    _mm_stream_ps (d3, _mm_unpacklo_ps(t7, t8));//a2,b2,c2,d2
    _mm_stream_ps (d4, _mm_unpackhi_ps  (t7, t8));//a3,b3,c3,d3
