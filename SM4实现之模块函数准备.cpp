@@ -4,7 +4,7 @@
 #include<cstdlib>
 using namespace std;
 
-string two_sixteen(string str) {//¶ş½øÖÆ×ª»»ÎªÊ®Áù½øÖÆµÄº¯ÊıÊµÏÖ
+string two_sixteen(string str) {//äºŒè¿›åˆ¶è½¬æ¢ä¸ºåå…­è¿›åˆ¶çš„å‡½æ•°å®ç°
 	string hex = "";
 	int temp = 0;
 	while (str.size() % 4 != 0) {
@@ -22,7 +22,7 @@ string two_sixteen(string str) {//¶ş½øÖÆ×ª»»ÎªÊ®Áù½øÖÆµÄº¯ÊıÊµÏÖ
 	return hex;
 }
 
-string sixteen_two(string str) {//Ê®Áù½øÖÆ×ª»»Îª¶ş½øÖÆµÄº¯ÊıÊµÏÖ
+string sixteen_two(string str) {//åå…­è¿›åˆ¶è½¬æ¢ä¸ºäºŒè¿›åˆ¶çš„å‡½æ•°å®ç°
 	string bin = "";
 	string table[16] = { "0000","0001","0010","0011","0100","0101","0110","0111","1000","1001","1010","1011","1100","1101","1110","1111" };
 	for (int i = 0; i < str.size(); i++) {
@@ -37,7 +37,7 @@ string sixteen_two(string str) {//Ê®Áù½øÖÆ×ª»»Îª¶ş½øÖÆµÄº¯ÊıÊµÏÖ
 }
 
 
-int sixteen_ten(char str) {//Ê®Áù½øÖÆ×ª»»ÎªÊ®½øÖÆµÄº¯ÊıÊµÏÖ
+int sixteen_ten(char str) {//åå…­è¿›åˆ¶è½¬æ¢ä¸ºåè¿›åˆ¶çš„å‡½æ•°å®ç°
 	int dec = 0;
 	if (str >= 'A' && str <= 'F') {
 		dec += (str - 'A' + 10);
@@ -48,13 +48,13 @@ int sixteen_ten(char str) {//Ê®Áù½øÖÆ×ª»»ÎªÊ®½øÖÆµÄº¯ÊıÊµÏÖ
 	return dec;
 }
 
-string shiftl(string str, int len) {//Ñ­»·×óÒÆlenÎ»º¯ÊıÊµÏÖ
+string shiftl(string str, int len) {//å¾ªç¯å·¦ç§»lenä½å‡½æ•°å®ç°
 	string res = sixteen_two(str);
 	res = res.substr(len) + res.substr(0, len);
 	return two_sixteen(res);
 }
 
-string yihuo(string str1, string str2) {//Òì»òº¯ÊıÊµÏÖ
+string yihuo(string str1, string str2) {//å¼‚æˆ–å‡½æ•°å®ç°
 	string res1 = sixteen_two(str1);
 	string res2 = sixteen_two(str2);
 	string res = "";
@@ -69,7 +69,7 @@ string yihuo(string str1, string str2) {//Òì»òº¯ÊıÊµÏÖ
 	return two_sixteen(res);
 }
 
-string nonline(string str) {//·ÇÏßĞÔ±ä»»tº¯ÊıÊµÏÖ
+string nonline(string str) {//éçº¿æ€§å˜æ¢tå‡½æ•°å®ç°
 	string Sbox[16][16] = { {"D6","90","E9","FE","CC","E1","3D","B7","16","B6","14","C2","28","FB","2C","05"},
 						 {"2B","67","9A","76","2A","BE","04","C3","AA","44","13","26","49","86","06","99"},
 						 {"9C","42","50","F4","91","EF","98","7A","33","54","0B","43","ED","CF","AC","62"},
@@ -93,23 +93,23 @@ string nonline(string str) {//·ÇÏßĞÔ±ä»»tº¯ÊıÊµÏÖ
 	return res;
 }
 
-string line(string str) {//ÏßĞÔ±ä»»Lº¯ÊıÊµÏÖ
+string line(string str) {//çº¿æ€§å˜æ¢Lå‡½æ•°å®ç°
 	return yihuo(yihuo(yihuo(yihuo(str, shiftl(str, 2)), shiftl(str, 10)), shiftl(str, 18)), shiftl(str, 24));
 }
 
-string line2(string str) {//ÏßĞÔ±ä»»L'º¯ÊıÊµÏÖ
+string line2(string str) {//çº¿æ€§å˜æ¢L'å‡½æ•°å®ç°
 	return yihuo(yihuo(str, shiftl(str, 13)), shiftl(str, 23));
 }
 
-string T(string str) {//ÓÃÓÚ¼Ó½âÃÜËã·¨ÖĞµÄºÏ³ÉÖÃ»»Tº¯ÊıÊµÏÖ
+string T(string str) {//ç”¨äºåŠ è§£å¯†ç®—æ³•ä¸­çš„åˆæˆç½®æ¢Tå‡½æ•°å®ç°
 	return line(nonline(str));
 }
 
-string T2(string str) {//ÓÃÓÚÃÜÔ¿À©Õ¹Ëã·¨ÖĞµÄºÏ³ÉÖÃ»»Tº¯ÊıÊµÏÖ
+string T2(string str) {//ç”¨äºå¯†é’¥æ‰©å±•ç®—æ³•ä¸­çš„åˆæˆç½®æ¢Tå‡½æ•°å®ç°
 	return line2(nonline(str));
 }
 
-string keyext(string MK) {//ÃÜÔ¿À©Õ¹º¯ÊıÊµÏÖ
+string keyext(string MK) {//å¯†é’¥æ‰©å±•å‡½æ•°å®ç°
 	string FK[4] = { "A3B1BAC6", "56AA3350", "677D9197", "B27022DC" };
 	string CK[32] = { "00070E15", "1C232A31", "383F464D", "545B6269",
 					  "70777E85", "8C939AA1", "A8AFB6BD", "C4CBD2D9",
@@ -128,8 +128,8 @@ string keyext(string MK) {//ÃÜÔ¿À©Õ¹º¯ÊıÊµÏÖ
 	return rks;
 }
 
-string encode(string plain, string key) {//¼ÓÃÜº¯ÊıÊµÏÖ
-	cout << "ÂÖÃÜÔ¿ÓëÃ¿ÂÖÊä³ö×´Ì¬£º" << endl;
+string encode(string plain, string key) {//åŠ å¯†å‡½æ•°å®ç°
+	cout << "è½®å¯†é’¥ä¸æ¯è½®è¾“å‡ºçŠ¶æ€ï¼š" << endl;
 	cout << endl;
 	string cipher[36] = { plain.substr(0,8),plain.substr(8,8),plain.substr(16,8),plain.substr(24) };
 	string rks = keyext(key);
@@ -141,8 +141,8 @@ string encode(string plain, string key) {//¼ÓÃÜº¯ÊıÊµÏÖ
 	return cipher[35] + cipher[34] + cipher[33] + cipher[32];
 }
 
-string decode(string cipher, string key) {//½âÃÜº¯ÊıÊµÏÖ
-	cout << "ÂÖÃÜÔ¿ÓëÃ¿ÂÖÊä³ö×´Ì¬£º" << endl;
+string decode(string cipher, string key) {//è§£å¯†å‡½æ•°å®ç°
+	cout << "è½®å¯†é’¥ä¸æ¯è½®è¾“å‡ºçŠ¶æ€ï¼š" << endl;
 	cout << endl;
 	string plain[36] = { cipher.substr(0,8),cipher.substr(8,8), cipher.substr(16,8), cipher.substr(24,8) };
 	string rks = keyext(key);
