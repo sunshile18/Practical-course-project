@@ -287,7 +287,7 @@ int main() {//主函数
 	mapsm3.insert(map<string, string>::value_type("0", "0"));
 	
 	srand(time(0));      //产生随机化种子
-	const int outputlen = 16;
+	const int outputlen = 64;//考虑HASH输出碰撞的位数
 	cout << "考虑HASH输出碰撞的位数:" << outputlen << endl;
 	int n = pow(2,outputlen/2);     //字符串个数 
 	//int n = 3;     //字符串个数
@@ -299,11 +299,11 @@ int main() {//主函数
 		for (int i = 1; i <= k; i++)
 		{
 			int x, s;                        //x表示这个字符的ascii码 ，s表示这个字符的大小写  
-			s = rand() % 2;                     //随机使s为1或0，为1就是大写，为0就是小写 
-			if (s == 1)                        //如果s=1 
-				x = rand() % ('Z' - 'A' + 1) + 'A';       //将x赋为大写字母的ascii码 
+			s = rand() % 2;                     
+			if (s == 1)                        
+				x = rand() % ('Z' - 'A' + 1) + 'A';       
 			else
-				x = rand() % ('z' - 'a' + 1) + 'a';  //如果s=0，x赋为小写字母的ascii码 
+				x = rand() % ('z' - 'a' + 1) + 'a';  
 			data += (char)x;//将x转换为字符输出 
 		}
 		
