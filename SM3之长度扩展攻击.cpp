@@ -5,7 +5,7 @@
 using namespace std;
 
 
-//¶ş½øÖÆ×ª»»ÎªÊ®Áù½øÖÆº¯ÊıÊµÏÖ
+//äºŒè¿›åˆ¶è½¬æ¢ä¸ºåå…­è¿›åˆ¶å‡½æ•°å®ç°
 string two_sixteen(string str) {
 	string hex = "";
 	int temp = 0;
@@ -24,7 +24,7 @@ string two_sixteen(string str) {
 	return hex;
 }
 
-//Ê®Áù½øÖÆ×ª»»Îª¶ş½øÖÆº¯ÊıÊµÏÖ
+//åå…­è¿›åˆ¶è½¬æ¢ä¸ºäºŒè¿›åˆ¶å‡½æ•°å®ç°
 string sixteen_two(string str) {
 	string bin = "";
 	string table[16] = { "0000","0001","0010","0011","0100","0101","0110","0111","1000","1001","1010","1011","1100","1101","1110","1111" };
@@ -39,7 +39,7 @@ string sixteen_two(string str) {
 	return bin;
 }
 
-//¶ş½øÖÆ×ª»»ÎªÊ®½øÖÆµÄº¯ÊıÊµÏÖ
+//äºŒè¿›åˆ¶è½¬æ¢ä¸ºåè¿›åˆ¶çš„å‡½æ•°å®ç°
 int two_ten(string str) {
 	int dec = 0;
 	for (int i = 0; i < str.size(); i++) {
@@ -48,7 +48,7 @@ int two_ten(string str) {
 	return dec;
 }
 
-//Ê®½øÖÆ×ª»»Îª¶ş½øÖÆµÄº¯ÊıÊµÏÖ
+//åè¿›åˆ¶è½¬æ¢ä¸ºäºŒè¿›åˆ¶çš„å‡½æ•°å®ç°
 string ten_two(int str) {
 	string bin = "";
 	while (str >= 1) {
@@ -58,7 +58,7 @@ string ten_two(int str) {
 	return bin;
 }
 
-//Ê®Áù½øÖÆ×ª»»ÎªÊ®½øÖÆµÄº¯ÊıÊµÏÖ
+//åå…­è¿›åˆ¶è½¬æ¢ä¸ºåè¿›åˆ¶çš„å‡½æ•°å®ç°
 int sixteen_ten(string str) {
 	int dec = 0;
 	for (int i = 0; i < str.size(); i++) {
@@ -72,7 +72,7 @@ int sixteen_ten(string str) {
 	return dec;
 }
 
-//Ê®½øÖÆ×ª»»ÎªÊ®Áù½øÖÆµÄº¯ÊıÊµÏÖ
+//åè¿›åˆ¶è½¬æ¢ä¸ºåå…­è¿›åˆ¶çš„å‡½æ•°å®ç°
 string ten_sixteen(int str) {
 	string hex = "";
 	int temp = 0;
@@ -89,7 +89,7 @@ string ten_sixteen(int str) {
 	return hex;
 }
 
-string padding(string res) {//Ìî³äº¯Êı
+string padding(string res) {//å¡«å……å‡½æ•°
 
 	int res_length = res.size() * 4;
 	res += "8";
@@ -104,13 +104,13 @@ string padding(string res) {//Ìî³äº¯Êı
 	return res;
 }
 
-string shiftL(string str, int len) {//ÊµÏÖÑ­»·×óÒÆ
+string shiftL(string str, int len) {//å®ç°å¾ªç¯å·¦ç§»
 	string res = sixteen_two(str);
 	res = res.substr(len) + res.substr(0, len);
 	return two_sixteen(res);
 }
 
-string XOR(string str1, string str2) {//ÊµÏÖÒì»ò²Ù×÷
+string XOR(string str1, string str2) {//å®ç°å¼‚æˆ–æ“ä½œ
 	string res1 = sixteen_two(str1);
 	string res2 = sixteen_two(str2);
 	string res = "";
@@ -125,7 +125,7 @@ string XOR(string str1, string str2) {//ÊµÏÖÒì»ò²Ù×÷
 	return two_sixteen(res);
 }
 
-string AND(string str1, string str2) {//ÊµÏÖÓë²Ù×÷
+string AND(string str1, string str2) {//å®ç°ä¸æ“ä½œ
 	string res1 = sixteen_two(str1);
 	string res2 = sixteen_two(str2);
 	string res = "";
@@ -140,7 +140,7 @@ string AND(string str1, string str2) {//ÊµÏÖÓë²Ù×÷
 	return two_sixteen(res);
 }
 
-string OR(string str1, string str2) {//ÊµÏÖ»ò²Ù×÷
+string OR(string str1, string str2) {//å®ç°æˆ–æ“ä½œ
 	string res1 = sixteen_two(str1);
 	string res2 = sixteen_two(str2);
 	string res = "";
@@ -155,7 +155,7 @@ string OR(string str1, string str2) {//ÊµÏÖ»ò²Ù×÷
 	return two_sixteen(res);
 }
 
-string NOT(string str) {//ÊµÏÖ·Ç²Ù×÷
+string NOT(string str) {//å®ç°éæ“ä½œ
 	string res1 = sixteen_two(str);
 	string res = "";
 	for (int i = 0; i < res1.size(); i++) {
@@ -169,15 +169,15 @@ string NOT(string str) {//ÊµÏÖ·Ç²Ù×÷
 	return two_sixteen(res);
 }
 
-char binXor(char str1, char str2) {//ÊµÏÖµ¥±ÈÌØµÄÒì»ò²Ù×÷
+char binXor(char str1, char str2) {//å®ç°å•æ¯”ç‰¹çš„å¼‚æˆ–æ“ä½œ
 	return str1 == str2 ? '0' : '1';
 }
 
-char binAnd(char str1, char str2) {//ÊµÏÖµ¥±ÈÌØµÄÓë²Ù×÷
+char binAnd(char str1, char str2) {//å®ç°å•æ¯”ç‰¹çš„ä¸æ“ä½œ
 	return (str1 == '1' && str2 == '1') ? '1' : '0';
 }
 
-string ModAdd(string str1, string str2) {//mod 2^32ÔËËãµÄº¯ÊıÊµÏÖ
+string ModAdd(string str1, string str2) {//mod 2^32è¿ç®—çš„å‡½æ•°å®ç°
 	string res1 = sixteen_two(str1);
 	string res2 = sixteen_two(str2);
 	char temp = '0';
@@ -199,15 +199,15 @@ string ModAdd(string str1, string str2) {//mod 2^32ÔËËãµÄº¯ÊıÊµÏÖ
 	return two_sixteen(res);
 }
 
-string P1(string str) {//ÊµÏÖÖÃ»»¹¦ÄÜP1£¨X£©
+string P1(string str) {//å®ç°ç½®æ¢åŠŸèƒ½P1ï¼ˆXï¼‰
 	return XOR(XOR(str, shiftL(str, 15)), shiftL(str, 23));
 }
 
-string P0(string str) {//ÊµÏÖÖÃ»»¹¦ÄÜP0£¨X£©
+string P0(string str) {//å®ç°ç½®æ¢åŠŸèƒ½P0ï¼ˆXï¼‰
 	return XOR(XOR(str, shiftL(str, 9)), shiftL(str, 17));
 }
 
-string T(int j) {//·µ»ØTj³£Á¿ÖµµÄº¯ÊıÊµÏÖ
+string T(int j) {//è¿”å›Tjå¸¸é‡å€¼çš„å‡½æ•°å®ç°
 	if (0 <= j && j <= 15) {
 		return "79CC4519";
 	}
@@ -216,7 +216,7 @@ string T(int j) {//·µ»ØTj³£Á¿ÖµµÄº¯ÊıÊµÏÖ
 	}
 }
 
-string FF(string str1, string str2, string str3, int j) {//ÊµÏÖ²¼¶ûº¯ÊıFF¹¦ÄÜ
+string FF(string str1, string str2, string str3, int j) {//å®ç°å¸ƒå°”å‡½æ•°FFåŠŸèƒ½
 	if (0 <= j && j <= 15) {
 		return XOR(XOR(str1, str2), str3);
 	}
@@ -225,7 +225,7 @@ string FF(string str1, string str2, string str3, int j) {//ÊµÏÖ²¼¶ûº¯ÊıFF¹¦ÄÜ
 	}
 }
 
-string GG(string str1, string str2, string str3, int j) {//ÊµÏÖ²¼¶ûº¯ÊıGG¹¦ÄÜ
+string GG(string str1, string str2, string str3, int j) {//å®ç°å¸ƒå°”å‡½æ•°GGåŠŸèƒ½
 	if (0 <= j && j <= 15) {
 		return XOR(XOR(str1, str2), str3);
 	}
@@ -233,7 +233,7 @@ string GG(string str1, string str2, string str3, int j) {//ÊµÏÖ²¼¶ûº¯ÊıGG¹¦ÄÜ
 		return OR(AND(str1, str2), AND(NOT(str1), str3));
 	}
 }
-string extension(string str) {//ÏûÏ¢À©Õ¹º¯Êı
+string extension(string str) {//æ¶ˆæ¯æ‰©å±•å‡½æ•°
 	string res = str;
 	for (int i = 16; i < 68; i++) {
 		res += XOR(XOR(P1(XOR(XOR(res.substr((i - 16) * 8, 8), res.substr((i - 9) * 8, 8)), shiftL(res.substr((i - 3) * 8, 8), 15))), shiftL(res.substr((i - 13) * 8, 8), 7)), res.substr((i - 6) * 8, 8));
@@ -244,7 +244,7 @@ string extension(string str) {//ÏûÏ¢À©Õ¹º¯Êı
 	return res;
 }
 
-string compress(string str1, string str2) {//ÏûÏ¢Ñ¹Ëõº¯Êı
+string compress(string str1, string str2) {//æ¶ˆæ¯å‹ç¼©å‡½æ•°
 	string IV = str2;
 	string A = IV.substr(0, 8), B = IV.substr(8, 8), C = IV.substr(16, 8), D = IV.substr(24, 8), E = IV.substr(32, 8), F = IV.substr(40, 8), G = IV.substr(48, 8), H = IV.substr(56, 8);
 	string SS1 = "", SS2 = "", TT1 = "", TT2 = "";
@@ -266,7 +266,7 @@ string compress(string str1, string str2) {//ÏûÏ¢Ñ¹Ëõº¯Êı
 	return res;
 }
 
-string iteration(string str) {//µü´úÑ¹Ëõº¯ÊıÊµÏÖ
+string iteration(string str) {//è¿­ä»£å‹ç¼©å‡½æ•°å®ç°
 	int num = str.size() / 128;
 	string V = "7380166F4914B2B9172442D7DA8A0600A96F30BC163138AAE38DEE4DB0FB0E4E";
 	string B = "", extensionB = "", compressB = "";
@@ -280,53 +280,53 @@ string iteration(string str) {//µü´úÑ¹Ëõº¯ÊıÊµÏÖ
 }
 
 
-int main() {//Ö÷º¯Êı
-	srand(time(0));      //²úÉúËæ»ú»¯ÖÖ×Ó
+int main() {//ä¸»å‡½æ•°
+	srand(time(0));      //äº§ç”ŸéšæœºåŒ–ç§å­
 	
-	int k = rand() % 100 + 20;                  //Ëæ»úÉú³ÉÒ»¸ö×Ö·û´®µÄ³¤¶È 
+	int k = rand() % 100 + 20;                  //éšæœºç”Ÿæˆä¸€ä¸ªå­—ç¬¦ä¸²çš„é•¿åº¦ 
 	string data = "";
 	for (int i = 1; i <= k; i++)
 	{
-		int x, s;                        //x±íÊ¾Õâ¸ö×Ö·ûµÄasciiÂë £¬s±íÊ¾Õâ¸ö×Ö·ûµÄ´óĞ¡Ğ´  
+		int x, s;                        //xè¡¨ç¤ºè¿™ä¸ªå­—ç¬¦çš„asciiç  ï¼Œsè¡¨ç¤ºè¿™ä¸ªå­—ç¬¦çš„å¤§å°å†™  
 		s = rand() % 2;
 		if (s == 1)
 			x = rand() % ('Z' - 'A' + 1) + 'A';
 		else
 			x = rand() % ('z' - 'a' + 1) + 'a';
-		data += (char)x;//½«x×ª»»Îª×Ö·ûÊä³ö 
+		data += (char)x;//å°†xè½¬æ¢ä¸ºå­—ç¬¦è¾“å‡º 
 	}
 	string res = "";
 	for (int i = 0; i < data.size(); i++) {
 		res += ten_sixteen((int)data[i]);
 	}
-	data = res;//Ê®Áù½øÖÆµÄÒ»¸öËæ»úÏûÏ¢
+	data = res;//åå…­è¿›åˆ¶çš„ä¸€ä¸ªéšæœºæ¶ˆæ¯
 	string paddingValue = padding(data);
 	size_t midlen = paddingValue.size()*4;
-	string result = iteration(paddingValue);//Çó³ö´ËÏûÏ¢µÄHASH
-	/*ÔÚ³¤¶ÈÀ©Õ¹¹¥»÷ÖĞ£¬¿ÉÒÔÒÑÖªÒ»¸öHASHÖµºÍ¸ÃÏûÏ¢À©Õ¹ºóµÄ³¤¶ÈÖµ£¬µ«ÊÇ²»Öª¸ÃÏûÏ¢*/
-	/*¼´ÔÚ´Ë³ÌĞòÖĞ£¬¹¥»÷ÕßÒÑÖªresult¡¢midlen£¬µ«ÊÇ²»Öªdata*/
-	/*ÒÔÏÂ½øĞĞ¹¥»÷*/
+	string result = iteration(paddingValue);//æ±‚å‡ºæ­¤æ¶ˆæ¯çš„HASH
+	/*åœ¨é•¿åº¦æ‰©å±•æ”»å‡»ä¸­ï¼Œå¯ä»¥å·²çŸ¥ä¸€ä¸ªHASHå€¼å’Œè¯¥æ¶ˆæ¯æ‰©å±•åçš„é•¿åº¦å€¼ï¼Œä½†æ˜¯ä¸çŸ¥è¯¥æ¶ˆæ¯*/
+	/*å³åœ¨æ­¤ç¨‹åºä¸­ï¼Œæ”»å‡»è€…å·²çŸ¥resultã€midlenï¼Œä½†æ˜¯ä¸çŸ¥data*/
+	/*ä»¥ä¸‹è¿›è¡Œæ”»å‡»*/
 
-	k = rand() % 56+1;                  //Ëæ»úÉú³ÉÒ»¸ö·Ö¿é³¤¶È
+	k = rand() % 56+1;                  //éšæœºç”Ÿæˆä¸€ä¸ªåˆ†å—é•¿åº¦
 	string datan = "";
 	for (int i = 1; i <= k; i++)
 	{
-		int x, s;                        //x±íÊ¾Õâ¸ö×Ö·ûµÄasciiÂë £¬s±íÊ¾Õâ¸ö×Ö·ûµÄ´óĞ¡Ğ´  
+		int x, s;                        //xè¡¨ç¤ºè¿™ä¸ªå­—ç¬¦çš„asciiç  ï¼Œsè¡¨ç¤ºè¿™ä¸ªå­—ç¬¦çš„å¤§å°å†™  
 		s = rand() % 2;
 		if (s == 1)
 			x = rand() % ('Z' - 'A' + 1) + 'A';
 		else
 			x = rand() % ('z' - 'a' + 1) + 'a';
-		datan += (char)x;//½«x×ª»»Îª×Ö·ûÊä³ö 
+		datan += (char)x;//å°†xè½¬æ¢ä¸ºå­—ç¬¦è¾“å‡º 
 	}
 	res = "";
 	for (int i = 0; i < datan.size(); i++) {
 		res += ten_sixteen((int)datan[i]);
 	}
-	datan = res;//Ê®Áù½øÖÆµÄÒ»¸öËæ»úÏûÏ¢·Ö¿é£¨´ËÎª¹¥»÷ÕßËæ»úÉú³ÉµÄÒ»´®ÏûÏ¢£©
+	datan = res;//åå…­è¿›åˆ¶çš„ä¸€ä¸ªéšæœºæ¶ˆæ¯åˆ†å—ï¼ˆæ­¤ä¸ºæ”»å‡»è€…éšæœºç”Ÿæˆçš„ä¸€ä¸²æ¶ˆæ¯ï¼‰
 
-	/*ÀûÓÃÒÑÖªµÄHASHÖµºÍÔ­ÏûÏ¢À©Õ¹ºóµÄ³¤¶ÈÖµ£¬À´Î±ÔìÒ»¸öĞÂÏûÏ¢µÄHASH*/
-	//À©Õ¹ĞÂµÄÏûÏ¢·Ö¿é£¬×¢Òâ³¤¶ÈÎª×Ü³¤¶È£¬¼´Ô­ÏûÏ¢À©Õ¹ºóµÄ³¤¶È+ĞÂÏûÏ¢·Ö¿éµÄ³¤¶È
+	/*åˆ©ç”¨å·²çŸ¥çš„HASHå€¼å’ŒåŸæ¶ˆæ¯æ‰©å±•åçš„é•¿åº¦å€¼ï¼Œæ¥ä¼ªé€ ä¸€ä¸ªæ–°æ¶ˆæ¯çš„HASH*/
+	//æ‰©å±•æ–°çš„æ¶ˆæ¯åˆ†å—ï¼Œæ³¨æ„é•¿åº¦ä¸ºæ€»é•¿åº¦ï¼Œå³åŸæ¶ˆæ¯æ‰©å±•åçš„é•¿åº¦+æ–°æ¶ˆæ¯åˆ†å—çš„é•¿åº¦
 	int res_length = res.size() * 4;
 	res += "8";
 	while (res.size() % 128 != 112) {
@@ -338,24 +338,24 @@ int main() {//Ö÷º¯Êı
 	}
 	res += res_len;
 	
-	//ÁîÔ­HASHÎªIV£¬ºÍÀ©Õ¹µÄĞÂµÄÏûÏ¢·Ö¿é½øĞĞÇó½âĞÂµÄHASH£¨ÒòÎªHASHº¯ÊıµÄ½á¹¹ÒÑÖª£©
+	//ä»¤åŸHASHä¸ºIVï¼Œå’Œæ‰©å±•çš„æ–°çš„æ¶ˆæ¯åˆ†å—è¿›è¡Œæ±‚è§£æ–°çš„HASHï¼ˆå› ä¸ºHASHå‡½æ•°çš„ç»“æ„å·²çŸ¥ï¼‰
 	string paddingValuen = res;
 	string V = result;
 	string B = paddingValuen;
 	string extensionB = extension(B);
 	string compressB = compress(extensionB, V);
-	V = XOR(V, compressB);//VÎªÎ±Ôì³öµÄHASHÖµ
+	V = XOR(V, compressB);//Vä¸ºä¼ªé€ å‡ºçš„HASHå€¼
 
-	//ÎªÁË¼ìÑéÊÇ·ñÎ±Ôì³É¹¦£¬½øĞĞÈçÏÂ²½Öè£¬ÕıÊ½¹¥»÷ÖĞ£¬ÓÉÓÚ²»ÖªÔ­À´µÄÏûÏ¢£¬²»ÄÜ½øĞĞÒÔÏÂ²½Öè£¬Ö±½ÓÊä³ö¹¥»÷½á¹û
-	string newmassage = paddingValue + datan;//Î±ÔìµÄ×ÜµÄĞÂÏûÏ¢
+	//ä¸ºäº†æ£€éªŒæ˜¯å¦ä¼ªé€ æˆåŠŸï¼Œè¿›è¡Œå¦‚ä¸‹æ­¥éª¤ï¼Œæ­£å¼æ”»å‡»ä¸­ï¼Œç”±äºä¸çŸ¥åŸæ¥çš„æ¶ˆæ¯ï¼Œä¸èƒ½è¿›è¡Œä»¥ä¸‹æ­¥éª¤ï¼Œç›´æ¥è¾“å‡ºæ”»å‡»ç»“æœ
+	string newmassage = paddingValue + datan;//ä¼ªé€ çš„æ€»çš„æ–°æ¶ˆæ¯
 	string a = padding(newmassage);
-	string truehash = iteration(a);//Ëã·¨Çó³ö´ËÏûÏ¢µÄHASH
+	string truehash = iteration(a);//ç®—æ³•æ±‚å‡ºæ­¤æ¶ˆæ¯çš„HASH
 
-	cout<<"Î±ÔìµÄÍêÕûÏûÏ¢ÊÇ£º"<< newmassage << endl;
-	if (truehash == V)//½øĞĞ½á¹û±È½Ï
+	cout<<"ä¼ªé€ çš„å®Œæ•´æ¶ˆæ¯æ˜¯ï¼š"<< newmassage << endl;
+	if (truehash == V)//è¿›è¡Œç»“æœæ¯”è¾ƒ
 	{
-		cout << "Î±Ôì³É¹¦£¡" << endl;
-		cout<< "HashÎª£º" << V << endl;
+		cout << "ä¼ªé€ æˆåŠŸï¼" << endl;
+		cout<< "Hashä¸ºï¼š" << V << endl;
 	}
 	
 	system("pause");
