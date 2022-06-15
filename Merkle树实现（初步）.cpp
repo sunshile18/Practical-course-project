@@ -4,13 +4,13 @@
 #include<string>
 
 using namespace std;
-//¶¨Òå¶ş²æÊ÷½á¹¹
+//å®šä¹‰äºŒå‰æ ‘ç»“æ„
 typedef struct BiTNode {
-	char* data; 	//Êı¾İÓòstruct BiTNode
-	BiTNode* lChild, * rChild;	//×óÓÒ×ÓÊ÷Óò
+	char* data; 	//æ•°æ®åŸŸstruct BiTNode
+	BiTNode* lChild, * rChild;	//å·¦å³å­æ ‘åŸŸ
 }*BiTree;
 
-//ÏÈĞò´´½¨¶ş²æÊ÷
+//å…ˆåºåˆ›å»ºäºŒå‰æ ‘
 int CreateBiTree(BiTree* T, string*datashz,int n,int num)
 {
 	
@@ -31,7 +31,7 @@ int CreateBiTree(BiTree* T, string*datashz,int n,int num)
 	return 1;
 }
 
-//ÏÈĞò±éÀú¶ş²æÊ÷
+//å…ˆåºéå†äºŒå‰æ ‘
 void TraverseBiTree(BiTree T)
 {
 	if (T == NULL)return;
@@ -41,7 +41,7 @@ void TraverseBiTree(BiTree T)
 	TraverseBiTree(T->rChild);
 }
 
-//Ê®½øÖÆ×ª»»ÎªÊ®Áù½øÖÆµÄº¯ÊıÊµÏÖ
+//åè¿›åˆ¶è½¬æ¢ä¸ºåå…­è¿›åˆ¶çš„å‡½æ•°å®ç°
 string ten_sixteen(int str) {
 	string hex = "";
 	int temp = 0;
@@ -91,11 +91,11 @@ void sha_com(string* datashz, int n,int num)
 int main()
 {
 	int numleaf;
-	cout << "Ò¶×Ó½ÚµãµÄ¸öÊıÎª:" << endl;
+	cout << "å¶å­èŠ‚ç‚¹çš„ä¸ªæ•°ä¸º:" << endl;
 	cin >> numleaf;
-	string* datashz = new string[numleaf*2-1];//¿ª±Ùn³¤µÄÊı×é
-	cout << "Çë´Ó×óµ½ÓÒÊäÈëÒ¶×Ó½ÚµãµÄÊı¾İ£º" << endl;
-	//µ±Ò¶×Ó½ÚµãµÄ¸öÊıÎªÅ¼ÊıÊ±
+	string* datashz = new string[numleaf*2-1];//å¼€è¾Ÿné•¿çš„æ•°ç»„
+	cout << "è¯·ä»å·¦åˆ°å³è¾“å…¥å¶å­èŠ‚ç‚¹çš„æ•°æ®ï¼š" << endl;
+	//å½“å¶å­èŠ‚ç‚¹çš„ä¸ªæ•°ä¸ºå¶æ•°æ—¶
 	if (numleaf % 2 == 0)
 	{
 		for (int i = 0; i < numleaf; i++)
@@ -111,7 +111,7 @@ int main()
 		int nn = numleaf - 1;
 		sha_com(datashz, nn, numleaf*2-2);
 	}
-	//µ±Ò¶×Ó½ÚµãµÄ¸öÊıÎªÆæÊıÊ±
+	//å½“å¶å­èŠ‚ç‚¹çš„ä¸ªæ•°ä¸ºå¥‡æ•°æ—¶
 	else
 	{
 		for (int i = 0; i < numleaf-1; i++)
@@ -134,15 +134,15 @@ int main()
 	}
 	
 	
-	//½¨Á¢merkleÊ÷
+	//å»ºç«‹merkleæ ‘
 	BiTree T;
-	cout<<"½¨Á¢merkleÊ÷" << endl;
+	cout<<"å»ºç«‹merkleæ ‘" << endl;
 	CreateBiTree(&T,datashz,0,2* numleaf-1);
-	printf("ÏÈĞò±éÀúmerkleÊ÷:\n");
+	printf("å…ˆåºéå†merkleæ ‘:\n");
 	TraverseBiTree(T);
 	printf("\n");
 
-	cout<<"Ê÷¸ùÎª£º" << endl;
+	cout<<"æ ‘æ ¹ä¸ºï¼š" << endl;
 	cout<<T->data<<endl;
 
 	system("pause");
