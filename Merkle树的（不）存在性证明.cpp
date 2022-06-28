@@ -5,7 +5,7 @@
 #include<vector>
 using namespace std;
 #define MAX_QUEUE_SIZE 200
-//¶¨Òå¶ş²æÊ÷½á¹¹
+//å®šä¹‰äºŒå‰æ ‘ç»“æ„
 typedef struct BiTNode {
 	char data[65];
 	BiTNode* lChild = NULL;
@@ -21,7 +21,7 @@ typedef struct queue
 	int rear;
 }SqQueue;
 
-//Ê®½øÖÆ×ª»»ÎªÊ®Áù½øÖÆµÄº¯ÊıÊµÏÖ
+//åè¿›åˆ¶è½¬æ¢ä¸ºåå…­è¿›åˆ¶çš„å‡½æ•°å®ç°
 string ten_sixteen(int str) {
 	string hex = "";
 	int temp = 0;
@@ -51,8 +51,8 @@ string transf(unsigned char* md) {
 	return result;
 }
 
-//Ñ­»·¶ÓÁĞ»ù±¾²Ù×÷
-//³õÊ¼»¯¶ÓÁĞ
+//å¾ªç¯é˜Ÿåˆ—åŸºæœ¬æ“ä½œ
+//åˆå§‹åŒ–é˜Ÿåˆ—
 SqQueue* Init_CirQueue()
 {
 	SqQueue* Q = (SqQueue*)malloc(sizeof(SqQueue));
@@ -62,35 +62,35 @@ SqQueue* Init_CirQueue()
 	return(Q);
 }
 
-SqQueue Q;//´æ´¢Ê÷½Úµã
-SqQueue Q1;//´æÔÚĞÔÖ¤Ã÷ÖĞÓÃµ½µÄ¶ÓÁĞ
-SqQueue Q2; //²»´æÔÚĞÔÖ¤Ã÷ÖĞÓÃµ½µÄ¶ÓÁĞ
+SqQueue Q;//å­˜å‚¨æ ‘èŠ‚ç‚¹
+SqQueue Q1;//å­˜åœ¨æ€§è¯æ˜ä¸­ç”¨åˆ°çš„é˜Ÿåˆ—
+SqQueue Q2; //ä¸å­˜åœ¨æ€§è¯æ˜ä¸­ç”¨åˆ°çš„é˜Ÿåˆ—
 
 
-//ÅĞ¶Ï¶ÓÁĞÊÇ·ñÎª¿Õ
+//åˆ¤æ–­é˜Ÿåˆ—æ˜¯å¦ä¸ºç©º
 bool IsEmpty_Queue(SqQueue& Q)
 {
 	if (Q.front == Q.rear)
-		return 1;       /*  ¶ÓÁĞ¿Õ£¬·µ»ØÊ§°Ü±êÖ¾  */
+		return 1;       /*  é˜Ÿåˆ—ç©ºï¼Œè¿”å›å¤±è´¥æ ‡å¿—  */
 	return 0;
 }
-//ÅĞ¶Ï¶ÓÁĞÊÇ·ñÒÑÂú
+//åˆ¤æ–­é˜Ÿåˆ—æ˜¯å¦å·²æ»¡
 bool IsFull_Queue(SqQueue& Q)
 {
-	if ((Q.rear + 1) % MAX_QUEUE_SIZE == Q.front)	/*  ¶ÓÂú*/
+	if ((Q.rear + 1) % MAX_QUEUE_SIZE == Q.front)	/*  é˜Ÿæ»¡*/
 		return 1;
 	return 0;
 }
-//Í³¼Æ¶ÓÁĞÖĞÔªËØ¸öÊı
+//ç»Ÿè®¡é˜Ÿåˆ—ä¸­å…ƒç´ ä¸ªæ•°
 int Size_Queue(SqQueue& Q)
 {
 	return (Q.rear + MAX_QUEUE_SIZE - Q.front) % MAX_QUEUE_SIZE;
 }
-//Íù¶ÓÁĞÖĞ²åÈëÔªËØ
+//å¾€é˜Ÿåˆ—ä¸­æ’å…¥å…ƒç´ 
 bool Push(SqQueue& Q, BiTNode& e)
-/*  ½«Êı¾İÔªËØe²åÈëµ½Ñ­»·¶ÓÁĞQµÄ¶ÓÎ²  */
+/*  å°†æ•°æ®å…ƒç´ eæ’å…¥åˆ°å¾ªç¯é˜Ÿåˆ—Qçš„é˜Ÿå°¾  */
 {
-	if (IsFull_Queue(Q))	/*  ¶ÓÂú*/
+	if (IsFull_Queue(Q))	/*  é˜Ÿæ»¡*/
 	{
 		printf("Insert: The queue is full.\n");
 		return 1;
@@ -101,21 +101,21 @@ bool Push(SqQueue& Q, BiTNode& e)
 		Q.array[Q.rear].data[i] = e.data[i];
 
 	}
- /*  ÔªËØeÈë¶Ó  */
+ /*  å…ƒç´ eå…¥é˜Ÿ  */
 	Q.array[Q.rear].lChild = e.lChild;
 	Q.array[Q.rear].rChild = e.rChild;
 	Q.rear = (Q.rear + 1) % MAX_QUEUE_SIZE;
-	/*  ¶ÓÎ²Ö¸ÕëÏòÇ°ÒÆ¶¯  */
-	return 0;        /*  Èë¶Ó³É¹¦    */
+	/*  é˜Ÿå°¾æŒ‡é’ˆå‘å‰ç§»åŠ¨  */
+	return 0;        /*  å…¥é˜ŸæˆåŠŸ    */
 }
-//È¡¶ÓÊ×ÔªËØ
+//å–é˜Ÿé¦–å…ƒç´ 
 BiTNode* Pop(SqQueue& Q)
-/*  ½«Ñ­»·¶ÓÁĞQµÄ¶ÓÊ×ÔªËØ³ö¶Ó  */
+/*  å°†å¾ªç¯é˜Ÿåˆ—Qçš„é˜Ÿé¦–å…ƒç´ å‡ºé˜Ÿ  */
 {
-	if (IsEmpty_Queue(Q))	/*  ¶Ó¿Õ£¬·µ»Ø´íÎó±êÖ¾    */
+	if (IsEmpty_Queue(Q))	/*  é˜Ÿç©ºï¼Œè¿”å›é”™è¯¯æ ‡å¿—    */
 	{
 		printf("The queue is empty.\n");
-		/*  ¶ÓÁĞ¿Õ£¬·µ»ØÊ§°Ü±êÖ¾  */
+		/*  é˜Ÿåˆ—ç©ºï¼Œè¿”å›å¤±è´¥æ ‡å¿—  */
 	}
 	BiTNode* x = (BiTNode*)malloc(sizeof(BiTNode));
 	memset(x->data, 0, 65);
@@ -123,15 +123,15 @@ BiTNode* Pop(SqQueue& Q)
 	{
 		x->data[i] = Q.array[Q.front].data[i];
 	}
-	 /*  È¡Õ»¶¥ÔªËØ  */
+	 /*  å–æ ˆé¡¶å…ƒç´   */
 	x->lChild = Q.array[Q.front].lChild;
 	x->rChild = Q.array[Q.front].rChild;
 	Q.front = (Q.front + 1) % MAX_QUEUE_SIZE;
-	/*  ¶ÓÊ×Ö¸ÕëÏòÇ°ÒÆ¶¯  */
+	/*  é˜Ÿé¦–æŒ‡é’ˆå‘å‰ç§»åŠ¨  */
 	return x;
 
 }
-//ÏÈĞò´´½¨¶ş²æÊ÷
+//å…ˆåºåˆ›å»ºäºŒå‰æ ‘
 void CreateBiTree()
 {
 	if (!IsEmpty_Queue(Q))
@@ -170,7 +170,7 @@ void CreateBiTree()
 
 }
 
-//ÏÈĞò±éÀú¶ş²æÊ÷
+//å…ˆåºéå†äºŒå‰æ ‘
 void TraverseBiTree(BiTNode* T)
 {
 	if (T == NULL)return;
@@ -181,7 +181,7 @@ void TraverseBiTree(BiTNode* T)
 	TraverseBiTree(T->rChild);
 }
 
-//´æÔÚĞÔÖ¤Ã÷
+//å­˜åœ¨æ€§è¯æ˜
 string Existence(string datatest, string ma)
 {
 	unsigned char md[33];
@@ -200,7 +200,7 @@ string Existence(string datatest, string ma)
 
 	Push(Q1, *d);
 
-	cout << "ÇëÒÀ´ÎÊäÈëÑéÖ¤ËùĞèµÄÖ¤¾İ£º" << endl;
+	cout << "è¯·ä¾æ¬¡è¾“å…¥éªŒè¯æ‰€éœ€çš„è¯æ®ï¼š" << endl;
 	int number_of_empty_res = 0;
 	vector<string> myvec;
 	string aa;
@@ -279,7 +279,7 @@ string Nonexistence(string datatest,string ma)
 
 	Push(Q2, *d);
 
-	cout << "ÇëÒÀ´ÎÊäÈëÑéÖ¤ËùĞèµÄÖ¤¾İ£º" << endl;
+	cout << "è¯·ä¾æ¬¡è¾“å…¥éªŒè¯æ‰€éœ€çš„è¯æ®ï¼š" << endl;
 	int number_of_empty_res = 0;
 	vector<string> myvec;
 	string aa;
@@ -344,10 +344,10 @@ string Nonexistence(string datatest,string ma)
 int main()
 {
 	int numleaf;
-	cout << "Ò¶×Ó½ÚµãµÄ¸öÊıÎª:" << endl;
+	cout << "å¶å­èŠ‚ç‚¹çš„ä¸ªæ•°ä¸º:" << endl;
 	cin >> numleaf;
 	string* strdata = new string[numleaf];
-	cout << "ÇëÒÀ´ÎÊäÈëÒ¶×Ó½ÚµãµÄÊı¾İ£º" << endl;
+	cout << "è¯·ä¾æ¬¡è¾“å…¥å¶å­èŠ‚ç‚¹çš„æ•°æ®ï¼š" << endl;
 	for (int i = 0; i < numleaf; i++)
 	{
 		string a;
@@ -372,40 +372,40 @@ int main()
 		
 	}
 
-	//½¨Á¢merkleÊ÷
+	//å»ºç«‹merkleæ ‘
 
-	cout << "½¨Á¢merkleÊ÷" << endl;
+	cout << "å»ºç«‹merkleæ ‘" << endl;
 
 	CreateBiTree();
 	BiTNode* root = Pop(Q);
-	printf("ÏÈĞò±éÀúmerkleÊ÷:\n");
+	printf("å…ˆåºéå†merkleæ ‘:\n");
 	TraverseBiTree(root);
 	printf("\n");
 
-	cout << "¸ÃmerkleÊ÷µÄÊ÷¸ùÎª£º" << endl;
+	cout << "è¯¥merkleæ ‘çš„æ ‘æ ¹ä¸ºï¼š" << endl;
 	string root0 = root->data;
 	cout << root->data << endl;
 
 	//********************************************************
 	
-	cout << "ÒªÑéÖ¤´æÔÚĞÔµÄ½áµãÔ­ÖµÎª£º" << endl;
+	cout << "è¦éªŒè¯å­˜åœ¨æ€§çš„ç»“ç‚¹åŸå€¼ä¸ºï¼š" << endl;
 	number = 0;
 	string aa;
 	cin >> aa;
-	cout << "¸Ã½áµãµÄÎ»ÖÃ±àÂëÎª£º" << endl;
+	cout << "è¯¥ç»“ç‚¹çš„ä½ç½®ç¼–ç ä¸ºï¼š" << endl;
 	string ma;
 	cin>>ma;
 
 	string root1=Existence(aa,ma);
-	cout << "´æÔÚĞÔÖ¤Ã÷¼ÆËãµÄÊ÷¸ùÎª£º" << endl;
+	cout << "å­˜åœ¨æ€§è¯æ˜è®¡ç®—çš„æ ‘æ ¹ä¸ºï¼š" << endl;
 	cout << root1.c_str() << endl;
 	if (root0 == root1)
 	{
-		cout<<"´Ë½áµã´æÔÚÓÚ´ËMerkleÊ÷ÖĞ¡£" << endl;
+		cout<<"æ­¤ç»“ç‚¹å­˜åœ¨äºæ­¤Merkleæ ‘ä¸­ã€‚" << endl;
 	}
 	
 	//*****************************************************
-	cout << "ÒªÑéÖ¤²»´æÔÚĞÔµÄ½áµãÔ­ÖµÎª£º" << endl;
+	cout << "è¦éªŒè¯ä¸å­˜åœ¨æ€§çš„ç»“ç‚¹åŸå€¼ä¸ºï¼š" << endl;
 	
 	string a;
 	cin >> a;
@@ -465,29 +465,29 @@ int main()
 	{
 		if (o2 == 1)
 		{
-			cout << "±È¸ÃÖµĞ¡µÄ×î´óµÄÔ­ÖµÎª£º" << endl;
+			cout << "æ¯”è¯¥å€¼å°çš„æœ€å¤§çš„åŸå€¼ä¸ºï¼š" << endl;
 			cout<<small<<endl;
-			cout << "¸Ã½áµãµÄÎ»ÖÃ±àÂëÎª£º" << endl;
+			cout << "è¯¥ç»“ç‚¹çš„ä½ç½®ç¼–ç ä¸ºï¼š" << endl;
 			string ma;
 			cin >> ma;
 			string root1 = Nonexistence(small,ma);
-			cout << "´æÔÚĞÔÖ¤Ã÷¼ÆËãµÄÊ÷¸ùÎª£º" << endl;
+			cout << "å­˜åœ¨æ€§è¯æ˜è®¡ç®—çš„æ ‘æ ¹ä¸ºï¼š" << endl;
 			cout << root1.c_str() << endl;
 			if (root0 == root1)
 			{
-				cout << "±È¸ÃÖµĞ¡µÄ×î´óµÄÖµ´æÔÚÓÚ´ËMerkleÊ÷ÖĞ¡£" << endl;
+				cout << "æ¯”è¯¥å€¼å°çš„æœ€å¤§çš„å€¼å­˜åœ¨äºæ­¤Merkleæ ‘ä¸­ã€‚" << endl;
 			}
 			//************************************
-			cout << "±È¸ÃÖµ´óµÄ×îĞ¡µÄÔ­ÖµÎª£º" << endl;
+			cout << "æ¯”è¯¥å€¼å¤§çš„æœ€å°çš„åŸå€¼ä¸ºï¼š" << endl;
 			cout << big<< endl;
-			cout << "¸Ã½áµãµÄÎ»ÖÃ±àÂëÎª£º" << endl;
+			cout << "è¯¥ç»“ç‚¹çš„ä½ç½®ç¼–ç ä¸ºï¼š" << endl;
 			cin >> ma;
 			string root2 = Nonexistence(big,ma);
-			cout << "´æÔÚĞÔÖ¤Ã÷¼ÆËãµÄÊ÷¸ùÎª£º" << endl;
+			cout << "å­˜åœ¨æ€§è¯æ˜è®¡ç®—çš„æ ‘æ ¹ä¸ºï¼š" << endl;
 			cout << root2.c_str() << endl;
 			if (root0 == root2)
 			{
-				cout << "±È¸ÃÖµ´óµÄ×îĞ¡µÄÖµ´æÔÚÓÚ´ËMerkleÊ÷ÖĞ¡£" << endl;
+				cout << "æ¯”è¯¥å€¼å¤§çš„æœ€å°çš„å€¼å­˜åœ¨äºæ­¤Merkleæ ‘ä¸­ã€‚" << endl;
 			}
 			if (root0 == root2 && root0 == root1)
 			{
@@ -497,18 +497,18 @@ int main()
 		}
 		else
 		{
-			cout << "Ã»ÓĞ±È¸ÃÖµ´óµÄÖµ" << endl;
-			cout << "±È¸ÃÖµĞ¡µÄ×î´óµÄÔ­ÖµÎª£º" << endl;
+			cout << "æ²¡æœ‰æ¯”è¯¥å€¼å¤§çš„å€¼" << endl;
+			cout << "æ¯”è¯¥å€¼å°çš„æœ€å¤§çš„åŸå€¼ä¸ºï¼š" << endl;
 			cout << small << endl;
-			cout << "¸Ã½áµãµÄÎ»ÖÃ±àÂëÎª£º" << endl;
+			cout << "è¯¥ç»“ç‚¹çš„ä½ç½®ç¼–ç ä¸ºï¼š" << endl;
 			string ma;
 			cin >> ma;
 			string root1 = Nonexistence(small,ma);
-			cout << "´æÔÚĞÔÖ¤Ã÷¼ÆËãµÄÊ÷¸ùÎª£º" << endl;
+			cout << "å­˜åœ¨æ€§è¯æ˜è®¡ç®—çš„æ ‘æ ¹ä¸ºï¼š" << endl;
 			cout << root1.c_str() << endl;
 			if (root0 == root1)
 			{
-				cout << "±È¸ÃÖµĞ¡µÄ×î´óµÄÖµ´æÔÚÓÚ´ËMerkleÊ÷ÖĞ¡£" << endl;
+				cout << "æ¯”è¯¥å€¼å°çš„æœ€å¤§çš„å€¼å­˜åœ¨äºæ­¤Merkleæ ‘ä¸­ã€‚" << endl;
 				final = 1;
 			}
 		}
@@ -518,29 +518,29 @@ int main()
 	{
 		if (o2 == 1)
 		{
-			cout << "Ã»ÓĞ±È¸ÃÖµĞ¡µÄÖµ" << endl;
-			cout << "±È¸ÃÖµ´óµÄ×îĞ¡µÄÔ­ÖµÎª£º" << endl;
+			cout << "æ²¡æœ‰æ¯”è¯¥å€¼å°çš„å€¼" << endl;
+			cout << "æ¯”è¯¥å€¼å¤§çš„æœ€å°çš„åŸå€¼ä¸ºï¼š" << endl;
 			cout << big << endl;
-			cout << "¸Ã½áµãµÄÎ»ÖÃ±àÂëÎª£º" << endl;
+			cout << "è¯¥ç»“ç‚¹çš„ä½ç½®ç¼–ç ä¸ºï¼š" << endl;
 			string ma;
 			cin >> ma;
 			string root1 = Nonexistence(big,ma);
-			cout << "´æÔÚĞÔÖ¤Ã÷¼ÆËãµÄÊ÷¸ùÎª£º" << endl;
+			cout << "å­˜åœ¨æ€§è¯æ˜è®¡ç®—çš„æ ‘æ ¹ä¸ºï¼š" << endl;
 			cout << root1.c_str() << endl;
 			if (root0 == root1)
 			{
-				cout << "±È¸ÃÖµ´óµÄ×îĞ¡µÄÖµ´æÔÚÓÚ´ËMerkleÊ÷ÖĞ¡£" << endl;
+				cout << "æ¯”è¯¥å€¼å¤§çš„æœ€å°çš„å€¼å­˜åœ¨äºæ­¤Merkleæ ‘ä¸­ã€‚" << endl;
 				final = 1;
 			}
 		}
 		else
 		{
-			cout << "Ã»ÓĞ±È¸ÃÖµ´ó»òĞ¡µÄÖµ" << endl;
+			cout << "æ²¡æœ‰æ¯”è¯¥å€¼å¤§æˆ–å°çš„å€¼" << endl;
 		}
 	}
 	if (final == 1)
 	{
-		cout<<"ÒªÖ¤Ã÷µÄÔ­Öµ²»´æÔÚÓÚ´ËMerkleÊ÷ÖĞ¡£" << endl;
+		cout<<"è¦è¯æ˜çš„åŸå€¼ä¸å­˜åœ¨äºæ­¤Merkleæ ‘ä¸­ã€‚" << endl;
 	}
 	
 	system("pause");
