@@ -107,7 +107,7 @@ int de_sm2(string a1, unsigned char* d, int l1, unsigned char* d2)
         ERR_error_string_n(ERR_get_error(), buf, sizeof(buf));
         cout << "fail!" << endl;
     }
-    //½âÃÜ
+    //Â½Ã¢ÃƒÃœ
     if ((EVP_PKEY_set_alias_type(bb, EVP_PKEY_SM2)) != 1)
     {
         cout << "fail!" << endl;
