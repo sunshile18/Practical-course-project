@@ -5,7 +5,7 @@
 
 
 using namespace std;
-//Ñ¡ÔñÍÖÔ²ÇúÏß²ÎÊı
+//é€‰æ‹©æ¤­åœ†æ›²çº¿å‚æ•°
 int k ;
 int a ;
 int b ;
@@ -13,7 +13,7 @@ int p ;
 int r ;
 
 
-//Çó³Ë·¨ÄæÔª
+//æ±‚ä¹˜æ³•é€†å…ƒ
 int getX_1(int x, int n) {
 	int aa, bb, cc, dd, ee, ff, gg, hh, ii, jj;
 	bb = 1;
@@ -37,7 +37,7 @@ int getX_1(int x, int n) {
 	return ff;
 }
 
-//µãµÄ½á¹¹Ìå
+//ç‚¹çš„ç»“æ„ä½“
 struct point {
 	int x;
 	int y;
@@ -45,12 +45,12 @@ struct point {
 
 typedef pair<point, point> twopoint;
 
-//¶¨ÒåÍÖÔ²ÇúÏßÉÏµÄÅĞ¶ÏµÈÓÚ²Ù×÷
+//å®šä¹‰æ¤­åœ†æ›²çº¿ä¸Šçš„åˆ¤æ–­ç­‰äºæ“ä½œ
 bool operator == (point pa, point pb)
 {
 	return pa.x == pb.x && pa.y == pb.y;
 }
-//¶¨ÒåÍÖÔ²ÇúÏßÉÏµÄ¼Ó·¨²Ù×÷
+//å®šä¹‰æ¤­åœ†æ›²çº¿ä¸Šçš„åŠ æ³•æ“ä½œ
 point operator + (point pa, point pb) {
 	int k;
 
@@ -66,7 +66,7 @@ point operator + (point pa, point pb) {
 
 	return c;
 }
-//¶¨ÒåÍÖÔ²ÇúÏßÉÏµÄ³Ë·¨²Ù×÷
+//å®šä¹‰æ¤­åœ†æ›²çº¿ä¸Šçš„ä¹˜æ³•æ“ä½œ
 point operator * (point& b, int n) {
 	point q = b;
 	n = n - 1;
@@ -76,10 +76,10 @@ point operator * (point& b, int n) {
 	return q;
 }
 
-//ECDSAµÄÇ©ÃûÎ±Ôìº¯Êı
+//ECDSAçš„ç­¾åä¼ªé€ å‡½æ•°
 void forge(point pk, int n, point G)
 {
-	const int max = 30;//¹¥»÷Õß¿É×Ô¶¨Òå·¶Î§
+	const int max = 30;//æ”»å‡»è€…å¯è‡ªå®šä¹‰èŒƒå›´
 	srand(time(NULL));
 	int u=rand() % max;
 	int v = rand()% max;
@@ -88,8 +88,8 @@ void forge(point pk, int n, point G)
 	int v_1 = getX_1(v, n);
 	int sn = (rn * v_1) % n;
 	int en = (rn * u * v_1) % n;
-	cout << "±»¹¥»÷µÄÓÃ»§µÄ¹«Ô¿Îª£º(" << pk.x<<","<<pk.y<<")" << endl;
-	cout << "Î±ÔìµÄÏûÏ¢µÄ¹şÏ£ÖµeÎª£º" << en << endl;
-	cout << "Î±ÔìµÄºÏ·¨±êÇ©Îª£¨r,s£©:(" << rn << "," << sn << ")" << endl;
+	cout << "è¢«æ”»å‡»çš„ç”¨æˆ·çš„å…¬é’¥ä¸ºï¼š(" << pk.x<<","<<pk.y<<")" << endl;
+	cout << "ä¼ªé€ çš„æ¶ˆæ¯çš„å“ˆå¸Œå€¼eä¸ºï¼š" << en << endl;
+	cout << "ä¼ªé€ çš„åˆæ³•æ ‡ç­¾ä¸ºï¼ˆr,sï¼‰:(" << rn << "," << sn << ")" << endl;
 
 }
