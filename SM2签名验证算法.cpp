@@ -6,7 +6,7 @@
 #include "openssl/sha.h"
 
 using namespace std;
-//Ñ¡ÔñÍÖÔ²ÇúÏß²ÎÊı
+//é€‰æ‹©æ¤­åœ†æ›²çº¿å‚æ•°
 int k;
 int a;
 int b;
@@ -14,7 +14,7 @@ int p;
 int r;
 
 
-//Çó³Ë·¨ÄæÔª
+//æ±‚ä¹˜æ³•é€†å…ƒ
 int getX_1(int x, int n) {
 	int aa, bb, cc, dd, ee, ff, gg, hh, ii, jj;
 	bb = 1;
@@ -38,7 +38,7 @@ int getX_1(int x, int n) {
 	return ff;
 }
 
-//µãµÄ½á¹¹Ìå
+//ç‚¹çš„ç»“æ„ä½“
 struct point {
 	int x;
 	int y;
@@ -48,12 +48,12 @@ struct point {
 typedef pair<point, point> twopoint;
 
 
-//¶¨ÒåÍÖÔ²ÇúÏßÉÏµÄÅĞ¶ÏµÈÓÚ²Ù×÷
+//å®šä¹‰æ¤­åœ†æ›²çº¿ä¸Šçš„åˆ¤æ–­ç­‰äºæ“ä½œ
 bool operator == (point pa, point pb)
 {
 	return pa.x == pb.x && pa.y == pb.y;
 }
-//¶¨ÒåÍÖÔ²ÇúÏßÉÏµÄ¼Ó·¨²Ù×÷
+//å®šä¹‰æ¤­åœ†æ›²çº¿ä¸Šçš„åŠ æ³•æ“ä½œ
 point operator + (point pa, point pb) {
 	int k;
 
@@ -69,7 +69,7 @@ point operator + (point pa, point pb) {
 
 	return c;
 }
-//¶¨ÒåÍÖÔ²ÇúÏßÉÏµÄ³Ë·¨²Ù×÷
+//å®šä¹‰æ¤­åœ†æ›²çº¿ä¸Šçš„ä¹˜æ³•æ“ä½œ
 point operator * (point& b, int n) {
 	point q = b;
 	n = n - 1;
@@ -80,26 +80,26 @@ point operator * (point& b, int n) {
 }
 
 
-//¶ş½øÖÆ×ª»»ÎªÊ®Áù½øÖÆº¯ÊıÊµÏÖ
+//äºŒè¿›åˆ¶è½¬æ¢ä¸ºåå…­è¿›åˆ¶å‡½æ•°å®ç°
 string BinToHex(string str) {
-	string hex = "";//ÓÃÀ´´æ´¢×îºóÉú³ÉµÄÊ®Áù½øÖÆÊı
-	int temp = 0;//ÓÃÀ´´æ´¢Ã¿´ÎËÄÎ»¶ş½øÖÆÊıµÄÊ®½øÖÆÖµ
-	while (str.size() % 4 != 0) {//ÒòÎªÃ¿ËÄÎ»¶ş½øÖÆÊı¾ÍÄÜ¹»³ÉÎªÒ»¸öÊ®Áù½øÖÆÊı£¬ËùÒÔ½«¶ş½øÖÆÊı³¤¶È×ª»»Îª4µÄ±¶Êı
-		str = "0" + str;//×î¸ßÎ»Ìí0Ö±µ½³¤¶ÈÎª4µÄ±¶Êı¼´¿É
+	string hex = "";//ç”¨æ¥å­˜å‚¨æœ€åç”Ÿæˆçš„åå…­è¿›åˆ¶æ•°
+	int temp = 0;//ç”¨æ¥å­˜å‚¨æ¯æ¬¡å››ä½äºŒè¿›åˆ¶æ•°çš„åè¿›åˆ¶å€¼
+	while (str.size() % 4 != 0) {//å› ä¸ºæ¯å››ä½äºŒè¿›åˆ¶æ•°å°±èƒ½å¤Ÿæˆä¸ºä¸€ä¸ªåå…­è¿›åˆ¶æ•°ï¼Œæ‰€ä»¥å°†äºŒè¿›åˆ¶æ•°é•¿åº¦è½¬æ¢ä¸º4çš„å€æ•°
+		str = "0" + str;//æœ€é«˜ä½æ·»0ç›´åˆ°é•¿åº¦ä¸º4çš„å€æ•°å³å¯
 	}
 	for (int i = 0; i < str.size(); i += 4) {
-		temp = (str[i] - '0') * 8 + (str[i + 1] - '0') * 4 + (str[i + 2] - '0') * 2 + (str[i + 3] - '0') * 1;//ÅĞ¶Ï³ö4Î»¶ş½øÖÆÊıµÄÊ®½øÖÆ´óĞ¡Îª¶àÉÙ
-		if (temp < 10) {//µ±µÃµ½µÄÖµĞ¡ÓÚ10Ê±£¬¿ÉÒÔÖ±½ÓÓÃ0-9À´´úÌæ
+		temp = (str[i] - '0') * 8 + (str[i + 1] - '0') * 4 + (str[i + 2] - '0') * 2 + (str[i + 3] - '0') * 1;//åˆ¤æ–­å‡º4ä½äºŒè¿›åˆ¶æ•°çš„åè¿›åˆ¶å¤§å°ä¸ºå¤šå°‘
+		if (temp < 10) {//å½“å¾—åˆ°çš„å€¼å°äº10æ—¶ï¼Œå¯ä»¥ç›´æ¥ç”¨0-9æ¥ä»£æ›¿
 			hex += to_string(temp);
 		}
-		else {//µ±µÃµ½µÄÖµ´óÓÚ10Ê±£¬ĞèÒª½øĞĞA-FµÄ×ª»»
+		else {//å½“å¾—åˆ°çš„å€¼å¤§äº10æ—¶ï¼Œéœ€è¦è¿›è¡ŒA-Fçš„è½¬æ¢
 			hex += 'A' + (temp - 10);
 		}
 	}
 	return hex;
 }
 
-//Ê®Áù½øÖÆ×ª»»Îª¶ş½øÖÆº¯ÊıÊµÏÖ
+//åå…­è¿›åˆ¶è½¬æ¢ä¸ºäºŒè¿›åˆ¶å‡½æ•°å®ç°
 string HexToBin(string str) {
 	string bin = "";
 	string table[16] = { "0000","0001","0010","0011","0100","0101","0110","0111","1000","1001","1010","1011","1100","1101","1110","1111" };
@@ -114,7 +114,7 @@ string HexToBin(string str) {
 	return bin;
 }
 
-//¶ş½øÖÆ×ª»»ÎªÊ®½øÖÆµÄº¯ÊıÊµÏÖ
+//äºŒè¿›åˆ¶è½¬æ¢ä¸ºåè¿›åˆ¶çš„å‡½æ•°å®ç°
 int BinToDec(string str) {
 	int dec = 0;
 	for (int i = 0; i < str.size(); i++) {
@@ -123,7 +123,7 @@ int BinToDec(string str) {
 	return dec;
 }
 
-//Ê®½øÖÆ×ª»»Îª¶ş½øÖÆµÄº¯ÊıÊµÏÖ
+//åè¿›åˆ¶è½¬æ¢ä¸ºäºŒè¿›åˆ¶çš„å‡½æ•°å®ç°
 string DecToBin(int str) {
 	string bin = "";
 	while (str >= 1) {
@@ -133,7 +133,7 @@ string DecToBin(int str) {
 	return bin;
 }
 
-//Ê®Áù½øÖÆ×ª»»ÎªÊ®½øÖÆµÄº¯ÊıÊµÏÖ
+//åå…­è¿›åˆ¶è½¬æ¢ä¸ºåè¿›åˆ¶çš„å‡½æ•°å®ç°
 int HexToDec(string str) {
 	int dec = 0;
 	for (int i = 0; i < str.size(); i++) {
@@ -147,7 +147,7 @@ int HexToDec(string str) {
 	return dec;
 }
 
-//Ê®½øÖÆ×ª»»ÎªÊ®Áù½øÖÆµÄº¯ÊıÊµÏÖ
+//åè¿›åˆ¶è½¬æ¢ä¸ºåå…­è¿›åˆ¶çš„å‡½æ•°å®ç°
 string DecToHex(int str) {
 	string hex = "";
 	int temp = 0;
@@ -164,15 +164,15 @@ string DecToHex(int str) {
 	return hex;
 }
 
-string padding(string res) {//¶ÔÊı¾İ½øĞĞÌî³ä 
+string padding(string res) {//å¯¹æ•°æ®è¿›è¡Œå¡«å…… 
 
 
-	int res_length = res.size() * 4;//¼ÇÂ¼µÄ³¤¶ÈÎª2½øÖÆÏÂµÄ³¤¶È
-	res += "8";//ÔÚ»ñµÃµÄÊı¾İºóÃæÌí1£¬ÔÚ16½øÖÆÏÂÏàµ±ÓÚÊÇÌí¼Ó8
+	int res_length = res.size() * 4;//è®°å½•çš„é•¿åº¦ä¸º2è¿›åˆ¶ä¸‹çš„é•¿åº¦
+	res += "8";//åœ¨è·å¾—çš„æ•°æ®åé¢æ·»1ï¼Œåœ¨16è¿›åˆ¶ä¸‹ç›¸å½“äºæ˜¯æ·»åŠ 8
 	while (res.size() % 128 != 112) {
-		res += "0";//¡°0¡±Êı¾İÌî³ä
+		res += "0";//â€œ0â€æ•°æ®å¡«å……
 	}
-	string res_len = DecToHex(res_length);//ÓÃÓÚ¼ÇÂ¼Êı¾İ³¤¶ÈµÄ×Ö·û´®
+	string res_len = DecToHex(res_length);//ç”¨äºè®°å½•æ•°æ®é•¿åº¦çš„å­—ç¬¦ä¸²
 	while (res_len.size() != 16) {
 		res_len = "0" + res_len;
 	}
@@ -180,13 +180,13 @@ string padding(string res) {//¶ÔÊı¾İ½øĞĞÌî³ä
 	return res;
 }
 
-string LeftShift(string str, int len) {//ÊµÏÖÑ­»·×óÒÆlenÎ»¹¦ÄÜ
+string LeftShift(string str, int len) {//å®ç°å¾ªç¯å·¦ç§»lenä½åŠŸèƒ½
 	string res = HexToBin(str);
 	res = res.substr(len) + res.substr(0, len);
 	return BinToHex(res);
 }
 
-string XOR(string str1, string str2) {//ÊµÏÖÒì»ò²Ù×÷
+string XOR(string str1, string str2) {//å®ç°å¼‚æˆ–æ“ä½œ
 	string res1 = HexToBin(str1);
 	string res2 = HexToBin(str2);
 	string res = "";
@@ -201,7 +201,7 @@ string XOR(string str1, string str2) {//ÊµÏÖÒì»ò²Ù×÷
 	return BinToHex(res);
 }
 
-string AND(string str1, string str2) {//ÊµÏÖÓë²Ù×÷
+string AND(string str1, string str2) {//å®ç°ä¸æ“ä½œ
 	string res1 = HexToBin(str1);
 	string res2 = HexToBin(str2);
 	string res = "";
@@ -216,7 +216,7 @@ string AND(string str1, string str2) {//ÊµÏÖÓë²Ù×÷
 	return BinToHex(res);
 }
 
-string OR(string str1, string str2) {//ÊµÏÖ»ò²Ù×÷
+string OR(string str1, string str2) {//å®ç°æˆ–æ“ä½œ
 	string res1 = HexToBin(str1);
 	string res2 = HexToBin(str2);
 	string res = "";
@@ -231,7 +231,7 @@ string OR(string str1, string str2) {//ÊµÏÖ»ò²Ù×÷
 	return BinToHex(res);
 }
 
-string NOT(string str) {//ÊµÏÖ·Ç²Ù×÷
+string NOT(string str) {//å®ç°éæ“ä½œ
 	string res1 = HexToBin(str);
 	string res = "";
 	for (int i = 0; i < res1.size(); i++) {
@@ -245,15 +245,15 @@ string NOT(string str) {//ÊµÏÖ·Ç²Ù×÷
 	return BinToHex(res);
 }
 
-char binXor(char str1, char str2) {//ÊµÏÖµ¥±ÈÌØµÄÒì»ò²Ù×÷
+char binXor(char str1, char str2) {//å®ç°å•æ¯”ç‰¹çš„å¼‚æˆ–æ“ä½œ
 	return str1 == str2 ? '0' : '1';
 }
 
-char binAnd(char str1, char str2) {//ÊµÏÖµ¥±ÈÌØµÄÓë²Ù×÷
+char binAnd(char str1, char str2) {//å®ç°å•æ¯”ç‰¹çš„ä¸æ“ä½œ
 	return (str1 == '1' && str2 == '1') ? '1' : '0';
 }
 
-string ModAdd(string str1, string str2) {//mod 2^32ÔËËãµÄº¯ÊıÊµÏÖ
+string ModAdd(string str1, string str2) {//mod 2^32è¿ç®—çš„å‡½æ•°å®ç°
 	string res1 = HexToBin(str1);
 	string res2 = HexToBin(str2);
 	char temp = '0';
@@ -275,15 +275,15 @@ string ModAdd(string str1, string str2) {//mod 2^32ÔËËãµÄº¯ÊıÊµÏÖ
 	return BinToHex(res);
 }
 
-string P1(string str) {//ÊµÏÖÖÃ»»¹¦ÄÜP1£¨X£©
+string P1(string str) {//å®ç°ç½®æ¢åŠŸèƒ½P1ï¼ˆXï¼‰
 	return XOR(XOR(str, LeftShift(str, 15)), LeftShift(str, 23));
 }
 
-string P0(string str) {//ÊµÏÖÖÃ»»¹¦ÄÜP0£¨X£©
+string P0(string str) {//å®ç°ç½®æ¢åŠŸèƒ½P0ï¼ˆXï¼‰
 	return XOR(XOR(str, LeftShift(str, 9)), LeftShift(str, 17));
 }
 
-string T(int j) {//·µ»ØTj³£Á¿ÖµµÄº¯ÊıÊµÏÖ
+string T(int j) {//è¿”å›Tjå¸¸é‡å€¼çš„å‡½æ•°å®ç°
 	if (0 <= j && j <= 15) {
 		return "79CC4519";
 	}
@@ -292,7 +292,7 @@ string T(int j) {//·µ»ØTj³£Á¿ÖµµÄº¯ÊıÊµÏÖ
 	}
 }
 
-string FF(string str1, string str2, string str3, int j) {//ÊµÏÖ²¼¶ûº¯ÊıFF¹¦ÄÜ
+string FF(string str1, string str2, string str3, int j) {//å®ç°å¸ƒå°”å‡½æ•°FFåŠŸèƒ½
 	if (0 <= j && j <= 15) {
 		return XOR(XOR(str1, str2), str3);
 	}
@@ -301,7 +301,7 @@ string FF(string str1, string str2, string str3, int j) {//ÊµÏÖ²¼¶ûº¯ÊıFF¹¦ÄÜ
 	}
 }
 
-string GG(string str1, string str2, string str3, int j) {//ÊµÏÖ²¼¶ûº¯ÊıGG¹¦ÄÜ
+string GG(string str1, string str2, string str3, int j) {//å®ç°å¸ƒå°”å‡½æ•°GGåŠŸèƒ½
 	if (0 <= j && j <= 15) {
 		return XOR(XOR(str1, str2), str3);
 	}
@@ -309,20 +309,20 @@ string GG(string str1, string str2, string str3, int j) {//ÊµÏÖ²¼¶ûº¯ÊıGG¹¦ÄÜ
 		return OR(AND(str1, str2), AND(NOT(str1), str3));
 	}
 }
-string extension(string str) {//ÏûÏ¢À©Õ¹º¯Êı
-	string res = str;//×Ö·û´®ÀàĞÍ´æ´¢Ç°68Î»´æ´¢À©Õ¹×ÖWÖµ
-	for (int i = 16; i < 68; i++) {//¸ù¾İ¹«Ê½Éú³ÉµÚ17Î»µ½µÚ68Î»µÄWÖµ
+string extension(string str) {//æ¶ˆæ¯æ‰©å±•å‡½æ•°
+	string res = str;//å­—ç¬¦ä¸²ç±»å‹å­˜å‚¨å‰68ä½å­˜å‚¨æ‰©å±•å­—Wå€¼
+	for (int i = 16; i < 68; i++) {//æ ¹æ®å…¬å¼ç”Ÿæˆç¬¬17ä½åˆ°ç¬¬68ä½çš„Wå€¼
 		res += XOR(XOR(P1(XOR(XOR(res.substr((i - 16) * 8, 8), res.substr((i - 9) * 8, 8)), LeftShift(res.substr((i - 3) * 8, 8), 15))), LeftShift(res.substr((i - 13) * 8, 8), 7)), res.substr((i - 6) * 8, 8));
 	}
 
-	for (int i = 0; i < 64; i++) {//¸ù¾İ¹«Ê½Éú³É64Î»W'Öµ
+	for (int i = 0; i < 64; i++) {//æ ¹æ®å…¬å¼ç”Ÿæˆ64ä½W'å€¼
 		res += XOR(res.substr(i * 8, 8), res.substr((i + 4) * 8, 8));
 	}
 
 	return res;
 }
 
-string compress(string str1, string str2) {//ÏûÏ¢Ñ¹Ëõº¯Êı
+string compress(string str1, string str2) {//æ¶ˆæ¯å‹ç¼©å‡½æ•°
 	string IV = str2;
 	string A = IV.substr(0, 8), B = IV.substr(8, 8), C = IV.substr(16, 8), D = IV.substr(24, 8), E = IV.substr(32, 8), F = IV.substr(40, 8), G = IV.substr(48, 8), H = IV.substr(56, 8);
 	string SS1 = "", SS2 = "", TT1 = "", TT2 = "";
@@ -347,7 +347,7 @@ string compress(string str1, string str2) {//ÏûÏ¢Ñ¹Ëõº¯Êı
 	return res;
 }
 
-string iteration(string str) {//µü´úÑ¹Ëõº¯ÊıÊµÏÖ
+string iteration(string str) {//è¿­ä»£å‹ç¼©å‡½æ•°å®ç°
 	int num = str.size() / 128;
 	string V = "7380166F4914B2B9172442D7DA8A0600A96F30BC163138AAE38DEE4DB0FB0E4E";
 	string B = "", extensionB = "", compressB = "";
@@ -363,7 +363,7 @@ string iteration(string str) {//µü´úÑ¹Ëõº¯ÊıÊµÏÖ
 int SM3_en(string str)
 {
 	string res = "";
-	for (int i = 0; i < str.size(); i++) {//Ê×ÏÈ½«ÊäÈëÖµ×ª»»Îª16½øÖÆ×Ö·û´®
+	for (int i = 0; i < str.size(); i++) {//é¦–å…ˆå°†è¾“å…¥å€¼è½¬æ¢ä¸º16è¿›åˆ¶å­—ç¬¦ä¸²
 		res += DecToHex((int)str[i]);
 	}
 	string paddingValue = padding(res);
@@ -377,14 +377,14 @@ void sign(int d_A, string m, string Z,point G,int n)
 {
 	string m2 = Z + m;
 	int e = SM3_en(m2);
-	const int max = 30;//¹¥»÷Õß¿É×Ô¶¨Òå·¶Î§
+	const int max = 30;//æ”»å‡»è€…å¯è‡ªå®šä¹‰èŒƒå›´
 	srand(time(NULL));
 	int k = rand() % max;
 	point t = G * k;
 	int r = (e + t.x) % n;
 	int h = getX_1(1 + d_A, n);
 	int s =( h * (k - r * d_A)) % n;
-	cout << "±êÇ©Îª£¨r,s£©:(" << r << "," << s << ")" << endl;
+	cout << "æ ‡ç­¾ä¸ºï¼ˆr,sï¼‰:(" << r << "," << s << ")" << endl;
 }
 
 void vrfy(point P_A,int n,point G ,string m,int r,int s,string Z)
@@ -396,17 +396,17 @@ void vrfy(point P_A,int n,point G ,string m,int r,int s,string Z)
 	int rr = (e + h.x) % n;
 	if (rr == r)
 	{
-		cout << "ÑéÖ¤Í¨¹ı£¡´ËÇ©ÃûÎªºÏ·¨Ç©Ãû¡£" << endl;
+		cout << "éªŒè¯é€šè¿‡ï¼æ­¤ç­¾åä¸ºåˆæ³•ç­¾åã€‚" << endl;
 	}
 	else
 	{
-		cout << "ÑéÖ¤Ã»ÓĞÍ¨¹ı£¡´ËÇ©Ãû²»ÊÇºÏ·¨Ç©Ãû¡£" << endl;
+		cout << "éªŒè¯æ²¡æœ‰é€šè¿‡ï¼æ­¤ç­¾åä¸æ˜¯åˆæ³•ç­¾åã€‚" << endl;
 	}
 }
 int main()
 {
 	point G;
-	//Ô¤¼ÆËã Z=H_256(ENTL_A||ID_A||a||b||x_G||y_G||x_A||y_A)
+	//é¢„è®¡ç®— Z=H_256(ENTL_A||ID_A||a||b||x_G||y_G||x_A||y_A)
 	string mm;//m=ENTL_A||ID_A||a||b||x_G||y_G||x_A||y_A
 	unsigned char md[33];
 	memset(md, 0, 33);
@@ -417,14 +417,14 @@ int main()
 		Z += md[i];
 	}
 
-	//ÃÜÔ¿Éú³É
-	const int max = 30;//¿É×Ô¶¨Òå·¶Î§
+	//å¯†é’¥ç”Ÿæˆ
+	const int max = 30;//å¯è‡ªå®šä¹‰èŒƒå›´
 	srand(time(NULL));
-	int d_A = rand() % max;//Ë½Ô¿
-	point P_A;//¹«Ô¿
+	int d_A = rand() % max;//ç§é’¥
+	point P_A;//å…¬é’¥
 	P_A = G * d_A;
 	
-	//Ç©ÃûËã·¨ÓëÑéÖ¤Ëã·¨µ÷ÓÃÏà¹Øº¯Êı¼´¿É
+	//ç­¾åç®—æ³•ä¸éªŒè¯ç®—æ³•è°ƒç”¨ç›¸å…³å‡½æ•°å³å¯
 
 	system("pause");
 	return 0;
