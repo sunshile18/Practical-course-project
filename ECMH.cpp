@@ -4,7 +4,7 @@
 #include<string>
 using namespace std;
 
-//Ñ¡ÔñÍÖÔ²ÇúÏß²ÎÊı
+//é€‰æ‹©æ¤­åœ†æ›²çº¿å‚æ•°
 int k;
 int a;
 int b;
@@ -12,7 +12,7 @@ int c;
 int p;
 
 
-//¶ş½øÖÆ×ª»»ÎªÊ®Áù½øÖÆº¯ÊıÊµÏÖ
+//äºŒè¿›åˆ¶è½¬æ¢ä¸ºåå…­è¿›åˆ¶å‡½æ•°å®ç°
 string two_sixteen(string str) {
 	string hex = "";
 	int temp = 0;
@@ -31,7 +31,7 @@ string two_sixteen(string str) {
 	return hex;
 }
 
-//Ê®Áù½øÖÆ×ª»»Îª¶ş½øÖÆº¯ÊıÊµÏÖ
+//åå…­è¿›åˆ¶è½¬æ¢ä¸ºäºŒè¿›åˆ¶å‡½æ•°å®ç°
 string sixteen_two(string str) {
 	string bin = "";
 	string table[16] = { "0000","0001","0010","0011","0100","0101","0110","0111","1000","1001","1010","1011","1100","1101","1110","1111" };
@@ -46,7 +46,7 @@ string sixteen_two(string str) {
 	return bin;
 }
 
-//¶ş½øÖÆ×ª»»ÎªÊ®½øÖÆµÄº¯ÊıÊµÏÖ
+//äºŒè¿›åˆ¶è½¬æ¢ä¸ºåè¿›åˆ¶çš„å‡½æ•°å®ç°
 int two_ten(string str) {
 	int dec = 0;
 	for (int i = 0; i < str.size(); i++) {
@@ -55,7 +55,7 @@ int two_ten(string str) {
 	return dec;
 }
 
-//Ê®½øÖÆ×ª»»Îª¶ş½øÖÆµÄº¯ÊıÊµÏÖ
+//åè¿›åˆ¶è½¬æ¢ä¸ºäºŒè¿›åˆ¶çš„å‡½æ•°å®ç°
 string ten_two(int str) {
 	string bin = "";
 	while (str >= 1) {
@@ -65,7 +65,7 @@ string ten_two(int str) {
 	return bin;
 }
 
-//Ê®Áù½øÖÆ×ª»»ÎªÊ®½øÖÆµÄº¯ÊıÊµÏÖ
+//åå…­è¿›åˆ¶è½¬æ¢ä¸ºåè¿›åˆ¶çš„å‡½æ•°å®ç°
 int sixteen_ten(string str) {
 	int dec = 0;
 	for (int i = 0; i < str.size(); i++) {
@@ -80,7 +80,7 @@ int sixteen_ten(string str) {
 }
 
 
-//Ê®½øÖÆ×ª»»ÎªÊ®Áù½øÖÆµÄº¯ÊıÊµÏÖ
+//åè¿›åˆ¶è½¬æ¢ä¸ºåå…­è¿›åˆ¶çš„å‡½æ•°å®ç°
 string ten_sixteen(int str) {
 	string hex = "";
 	int temp = 0;
@@ -122,14 +122,14 @@ int transftoint(unsigned char* md) {
 	return result ;
 }
 
-//ÍÖÔ²ÇúÏß¿ÉÒÔ±íÊ¾Îª£ºy ^ 2 = x ^ 3 + ax ^ 2 + bx + c
+//æ¤­åœ†æ›²çº¿å¯ä»¥è¡¨ç¤ºä¸ºï¼šy ^ 2 = x ^ 3 + ax ^ 2 + bx + c
 int pointXtoY(int x)
 {
 	int pp = (x ^ 3 + a * x ^ 2 + b * x + c) % p;
 	int y = sqrt(pp);
 	return y;
 }
-//Çó³Ë·¨ÄæÔª
+//æ±‚ä¹˜æ³•é€†å…ƒ
 int getX_1(int x, int n) {
 	int aa, bb, cc, dd, ee, ff, gg, hh, ii, jj;
 	bb = 1;
@@ -160,12 +160,12 @@ struct point {
 
 typedef pair<point, point> twopoint;
 
-//¶¨ÒåÍÖÔ²ÇúÏßÉÏµÄÅĞ¶ÏµÈÓÚ²Ù×÷
+//å®šä¹‰æ¤­åœ†æ›²çº¿ä¸Šçš„åˆ¤æ–­ç­‰äºæ“ä½œ
 bool operator == (point pa, point pb)
 {
 	return pa.x == pb.x && pa.y == pb.y;
 }
-//¶¨ÒåÍÖÔ²ÇúÏßÉÏµÄ¼Ó·¨²Ù×÷
+//å®šä¹‰æ¤­åœ†æ›²çº¿ä¸Šçš„åŠ æ³•æ“ä½œ
 point operator + (point pa, point pb) {
 	int k;
 
@@ -181,7 +181,7 @@ point operator + (point pa, point pb) {
 
 	return c;
 }
-//¶¨ÒåÍÖÔ²ÇúÏßÉÏµÄ³Ë·¨²Ù×÷
+//å®šä¹‰æ¤­åœ†æ›²çº¿ä¸Šçš„ä¹˜æ³•æ“ä½œ
 point operator * (point& b, int n) {
 	point q = b;
 	n = n - 1;
@@ -191,7 +191,7 @@ point operator * (point& b, int n) {
 	return q;
 }
 
-//½«ÏûÏ¢£¨×Ö·û´®£©Ó³Éäµ½ÍÖÔ²ÇúÏßÉÏµÄµã²¢·µ»Ø
+//å°†æ¶ˆæ¯ï¼ˆå­—ç¬¦ä¸²ï¼‰æ˜ å°„åˆ°æ¤­åœ†æ›²çº¿ä¸Šçš„ç‚¹å¹¶è¿”å›
 point hashTOpoint(string m)
 {
 	unsigned char md[33];
@@ -206,9 +206,9 @@ point hashTOpoint(string m)
 }
 
 
-//Çó¼¯ºÏµÄHashÖµ
-//¶øÇÒÓÉÓÚÈôËùÑ¡µÄÍÖÔ²ÇúÏßÎª°¢±´¶ûÈº,ÔòÔÚÍÖÔ²ÇúÏßÉÏµÄ¼Ó·¨²Ù×÷ÓĞÈçÏÂĞÔÖÊ:a+b=b+a
-//Òò´Ë¿ÉÒÔÊ¹µÃÒÔÈÎºÎË³ĞòÇó³öµÄ¼¯ºÏÖµ²»±ä£¨Ö»Òª¼¯ºÏµÄÔªËØ²»±ä£©
+//æ±‚é›†åˆçš„Hashå€¼
+//è€Œä¸”ç”±äºè‹¥æ‰€é€‰çš„æ¤­åœ†æ›²çº¿ä¸ºé˜¿è´å°”ç¾¤,åˆ™åœ¨æ¤­åœ†æ›²çº¿ä¸Šçš„åŠ æ³•æ“ä½œæœ‰å¦‚ä¸‹æ€§è´¨:a+b=b+a
+//å› æ­¤å¯ä»¥ä½¿å¾—ä»¥ä»»ä½•é¡ºåºæ±‚å‡ºçš„é›†åˆå€¼ä¸å˜ï¼ˆåªè¦é›†åˆçš„å…ƒç´ ä¸å˜ï¼‰
 point MultisetHash(string* set, int n)
 {
 	point re = hashTOpoint(set[0]);
