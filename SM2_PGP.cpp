@@ -12,7 +12,7 @@
 
 
 using namespace std;
-//Ñ¡ÔñÍÖÔ²ÇúÏß²ÎÊı
+//é€‰æ‹©æ¤­åœ†æ›²çº¿å‚æ•°
 int k;
 int a;
 int b;
@@ -20,7 +20,7 @@ int p;
 int r;
 
 
-//Çó³Ë·¨ÄæÔª
+//æ±‚ä¹˜æ³•é€†å…ƒ
 int getX_1(int x, int n) {
 	int aa, bb, cc, dd, ee, ff, gg, hh, ii, jj;
 	bb = 1;
@@ -44,19 +44,19 @@ int getX_1(int x, int n) {
 	return ff;
 }
 
-//µãµÄ½á¹¹Ìå
+//ç‚¹çš„ç»“æ„ä½“
 struct point {
 	int x;
 	int y;
 };
 
 
-//¶¨ÒåÍÖÔ²ÇúÏßÉÏµÄÅĞ¶ÏµÈÓÚ²Ù×÷
+//å®šä¹‰æ¤­åœ†æ›²çº¿ä¸Šçš„åˆ¤æ–­ç­‰äºæ“ä½œ
 bool operator == (point pa, point pb)
 {
 	return pa.x == pb.x && pa.y == pb.y;
 }
-//¶¨ÒåÍÖÔ²ÇúÏßÉÏµÄ¼Ó·¨²Ù×÷
+//å®šä¹‰æ¤­åœ†æ›²çº¿ä¸Šçš„åŠ æ³•æ“ä½œ
 point operator + (point pa, point pb) {
 	int k;
 
@@ -72,7 +72,7 @@ point operator + (point pa, point pb) {
 
 	return c;
 }
-//¶¨ÒåÍÖÔ²ÇúÏßÉÏµÄ³Ë·¨²Ù×÷
+//å®šä¹‰æ¤­åœ†æ›²çº¿ä¸Šçš„ä¹˜æ³•æ“ä½œ
 point operator * (point& b, int n) {
 	point q = b;
 	n = n - 1;
@@ -178,7 +178,7 @@ int de_sm2(string a1, unsigned char* d, int l1, unsigned char* d2)
 		ERR_error_string_n(ERR_get_error(), buf, sizeof(buf));
 		cout << "fail!" << endl;
 	}
-	//½âÃÜ
+	//è§£å¯†
 	if ((EVP_PKEY_set_alias_type(bb, EVP_PKEY_SM2)) != 1)
 	{
 		cout << "fail!" << endl;
@@ -212,15 +212,15 @@ int de_sm2(string a1, unsigned char* d, int l1, unsigned char* d2)
 	return l2;
 }
 
-//PGP¼ÓÃÜËã·¨
+//PGPåŠ å¯†ç®—æ³•
 void PGP_en(string  pk2,unsigned char *m,int len)
 {
 	unsigned char s1[512];
 	int ll;
-	//»á»°ÃÜÔ¿Éú³É
+	//ä¼šè¯å¯†é’¥ç”Ÿæˆ
 	string k;
 	int len2 = k.length();
-	//Ê¹ÓÃ½ÓÊÕ·½µÄ¹«Ô¿¶Ô»á»°ÃÜÔ¿¼ÓÃÜ£¬²¢Êä³öÃÜÎÄ1
+	//ä½¿ç”¨æ¥æ”¶æ–¹çš„å…¬é’¥å¯¹ä¼šè¯å¯†é’¥åŠ å¯†ï¼Œå¹¶è¾“å‡ºå¯†æ–‡1
 	unsigned char* mm = new unsigned char[len2];
 	for (int i = 0; i < len2; i++)
 	{
@@ -241,7 +241,7 @@ void PGP_en(string  pk2,unsigned char *m,int len)
 	}
 	cout << endl;
 
-    //Ê¹ÓÃ»á»°ÃÜÔ¿¶ÔÓÚÏûÏ¢¼ÓÃÜ£¬²¢Êä³öÃÜÎÄ2
+    //ä½¿ç”¨ä¼šè¯å¯†é’¥å¯¹äºæ¶ˆæ¯åŠ å¯†ï¼Œå¹¶è¾“å‡ºå¯†æ–‡2
 	unsigned char s2[512];
 	for (int i = 64; i < k.size(); i += 64)
 	{
@@ -259,13 +259,13 @@ void PGP_en(string  pk2,unsigned char *m,int len)
 	cout << endl;
 }
 
-//PGP½âÃÜËã·¨
+//PGPè§£å¯†ç®—æ³•
 void PGP_de(string sk2, unsigned char* c1, int len1, unsigned char* c2, int len2 )
 {
 	unsigned char s1[512];
 	int ll;
 
-	//Ê¹ÓÃ½ÓÊÕ·½µÄË½Ô¿¶ÔÓÚÃÜÎÄ1½âÃÜ£¬²¢Êä³öÃ÷ÎÄ1£¨¼´»á»°ÃÜÔ¿£©
+	//ä½¿ç”¨æ¥æ”¶æ–¹çš„ç§é’¥å¯¹äºå¯†æ–‡1è§£å¯†ï¼Œå¹¶è¾“å‡ºæ˜æ–‡1ï¼ˆå³ä¼šè¯å¯†é’¥ï¼‰
 	for (int i = 64; i < sk2.size(); i += 64)
 	{
 		if (sk2[i] != '\n')
@@ -281,7 +281,7 @@ void PGP_de(string sk2, unsigned char* c1, int len1, unsigned char* c2, int len2
 	}
 	cout << endl;
 	
-	//Ê¹ÓÃ»á»°ÃÜÔ¿¶ÔÓÚÃÜÎÄ2½âÃÜ£¬²¢Êä³öÃ÷ÎÄ2£¨¼´ÏûÏ¢£©
+	//ä½¿ç”¨ä¼šè¯å¯†é’¥å¯¹äºå¯†æ–‡2è§£å¯†ï¼Œå¹¶è¾“å‡ºæ˜æ–‡2ï¼ˆå³æ¶ˆæ¯ï¼‰
 	unsigned char s2[512];
 	string k = "";
 	for (int i = 0; i < 512; i++)
@@ -307,12 +307,12 @@ void PGP_de(string sk2, unsigned char* c1, int len1, unsigned char* c2, int len2
 
 int main()
 {
-	//ABË«·½¶¼ÓĞ¸÷×ÔµÄ¹«Ë½Ô¿£¬¹«¿ª¹«Ô¿£¬±£ÃÜË½Ô¿
-	string sk1,sk2;//Ë½Ô¿±£ÃÜ
-	string pk1, pk2;//¹«Ô¿¹«¿ª
+	//ABåŒæ–¹éƒ½æœ‰å„è‡ªçš„å…¬ç§é’¥ï¼Œå…¬å¼€å…¬é’¥ï¼Œä¿å¯†ç§é’¥
+	string sk1,sk2;//ç§é’¥ä¿å¯†
+	string pk1, pk2;//å…¬é’¥å…¬å¼€
 	
 
-	//PGP¼ÓÃÜËã·¨Óë½âÃÜËã·¨µ÷ÓÃÏà¹Øº¯Êı¼´¿É
+	//PGPåŠ å¯†ç®—æ³•ä¸è§£å¯†ç®—æ³•è°ƒç”¨ç›¸å…³å‡½æ•°å³å¯
 
 	system("pause");
 	return 0;
