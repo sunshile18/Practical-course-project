@@ -47,6 +47,7 @@
 ## 分析比特币区块的每一个比特
 ## SM2两方加密
 ## Google Password Checkup
+## Find a key with hash value "sdu_cst_20220610" under a message composed of your name followed by your student ID.
 # 有问题的项目及问题
 ## SM3优化
 在本项目中，主要针对SIMD指令进行了了解和学习使用，主要将此优化方法应用在了更加直接的矩阵乘的优化中，而没有来得及将其应用于SM3中进行优化。文件为“矩阵乘SIMD加速.cpp”。
