@@ -54,8 +54,9 @@
 
 
 # 未完成的项目
-## MPT
-## 分析比特币区块的每一个比特
-## SM2两方加密
-## Google Password Checkup
-## Find a key with hash value "sdu_cst_20220610" under a message composed of your name followed by your student ID.
+## 1.MPT
+## 2.分析比特币区块的每一个比特
+## 3.SM2两方加密
+## 4.Google Password Checkup
+## 5.Find a key with hash value "sdu_cst_20220610" under a message composed of your name followed by your student ID.
+## 6.Find a 64-byte message under some k fulfilling that their hash value is symmetrical
