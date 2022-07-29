@@ -62,10 +62,10 @@
 ## 6.Find a 64-byte message under some k fulfilling that their hash value is symmetrical
 
 # 参考文献
-https://blog.csdn.net/wcc19840827/article/details/103857971?spm=1001.2101.3001.6650.18&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7Edefault-18-103857971-blog-81489915.pc_relevant_downloadblacklistv1&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7Edefault-18-103857971-blog-81489915.pc_relevant_downloadblacklistv1&utm_relevant_index=23 <br>
-https://copyfuture.com/blogs-details/20210623061641500Z <br>
-https://blockchain-fans.blog.csdn.net/article/details/85339243?spm=1001.2101.3001.6650.12&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7Edefault-12-85339243-blog-81135439.pc_relevant_default&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7Edefault-12-85339243-blog-81135439.pc_relevant_default&utm_relevant_index=20 <br>
-https://blog.csdn.net/qq_40662424/article/details/121637732 <br>
-https://blog.csdn.net/kawayiyy123/article/details/106857256/ <br>
+https://blog.csdn.net/wcc19840827/article/details/103857971?spm=1001.2101.3001.6650.18&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7Edefault-18-103857971-blog-81489915.pc_relevant_downloadblacklistv1&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7Edefault-18-103857971-blog-81489915.pc_relevant_downloadblacklistv1&utm_relevant_index=23 <br><br>
+https://copyfuture.com/blogs-details/20210623061641500Z <br><br>
+https://blockchain-fans.blog.csdn.net/article/details/85339243?spm=1001.2101.3001.6650.12&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7Edefault-12-85339243-blog-81135439.pc_relevant_default&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7Edefault-12-85339243-blog-81135439.pc_relevant_default&utm_relevant_index=20 <br><br>
+https://blog.csdn.net/qq_40662424/article/details/121637732 <br><br>
+https://blog.csdn.net/kawayiyy123/article/details/106857256/ <br><br>
 https://blog.csdn.net/qq_35699583/article/details/113060927?spm=1001.2101.3001.6650.2&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-2-113060927-blog-121555000.pc_relevant_multi_platform_featuressortv2dupreplace&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-2-113060927-blog-121555000.pc_relevant_multi_platform_featuressortv2dupreplace&utm_relevant_index=5 <br>
-https://blog.csdn.net/hacker_lpy/article/details/124211114 <br>
+https://blog.csdn.net/hacker_lpy/article/details/124211114 <br><br>
